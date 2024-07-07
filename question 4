@@ -1,0 +1,75 @@
+4. Encode the user input using the following alg, using the encode Key (a number)
+
+For each word in the odd position, move each letter in the word by the number of positions mentioned in the key.
+For words in the even position, reverse the word and then do the same as the odd position
+
+Eg - Key 2, input sentence "I am the King"
+Output K oc vjg ipkM
+
+Program:
+
+import java.util.Scanner;
+
+public class Main {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the sentence to encode: ");
+        String sentence = scanner.nextLine();
+        System.out.print("Enter the key (a number): ");
+        int key = scanner.nextInt();
+        scanner.close();
+
+        String encodedSentence = encodeSentence(sentence, key);
+        System.out.println("Encoded sentence: " + encodedSentence);
+    }
+
+    public static String encodeSentence(String sentence, int key) {
+        StringBuilder encoded = new StringBuilder();
+        String[] words = sentence.split("\\s+");
+        
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            if (i % 2 == 0) { // Odd position (1-based index)
+                encoded.append(shiftLetters(word, key));
+            } else { // Even position (1-based index)
+                encoded.append(shiftLetters(reverseWord(word), key));
+            }
+
+            // Add space between words except after the last word
+            if (i < words.length - 1) {
+                encoded.append(" ");
+            }
+        }
+
+        return encoded.toString();
+    }
+
+    public static String shiftLetters(String word, int key) {
+        StringBuilder shifted = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            if (Character.isLetter(ch)) {
+                char shiftedChar = (char) (ch + key);
+                if ((Character.isUpperCase(ch) && shiftedChar > 'Z') ||
+                    (Character.isLowerCase(ch) && shiftedChar > 'z')) {
+                    shiftedChar = (char) (ch - (26 - key));
+                }
+                shifted.append(shiftedChar);
+            } else {
+                shifted.append(ch);
+            }
+        }
+        return shifted.toString();
+    }
+
+    public static String reverseWord(String word) {
+        return new StringBuilder(word).reverse().toString();
+    }
+}
+
+Output:
+
+Enter the sentence to encode: I am the King
+Enter the key (a number): 2
+Encoded sentence: K oc vjg ipkM
