@@ -1,0 +1,44 @@
+3. No need to write a program. Just pseudocode is enough.Define a class for a instagram post. Define the properties and functions.
+Define which one will be private and which one public.
+
+Pseudocode:
+
+class InstagramPost {
+    // Private properties
+    private String username;
+    private String imageUrl;
+    private String caption;
+    private int likes;
+    private List<String> comments;
+
+    // Public constructor
+    public InstagramPost(String username, String imageUrl, String caption) {
+        this.username = username;
+        this.imageUrl = imageUrl;
+        this.caption = caption;
+        this.likes = 0;
+        this.comments = new ArrayList<>();
+    }
+
+    // Public method to add a like
+    public void addLike() {
+        this.likes++;
+    }
+
+    // Public method to add a comment
+    public void addComment(String comment) {
+        this.comments.add(comment);
+    }
+
+    // Public method to display post details
+    public void displayPostDetails() {
+        System.out.println("Username: " + this.username);
+        System.out.println("Image URL: " + this.imageUrl);
+        System.out.println("Caption: " + this.caption);
+        System.out.println("Likes: " + this.likes);
+        System.out.println("Comments:");
+        for (String comment : this.comments) {
+            System.out.println(comment);
+        }
+    }
+}
