@@ -1,0 +1,302 @@
+2. You are writing an essay. You don't want the any word to appear very frequently. Write a program that will take your essay as input (maybe from a file) and print the number of times each unique word appears in your essay.
+
+Program:
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class  Main {
+
+    public static void main(String[] args) {
+        // Provide the path to the file containing the essay
+        String filePath = "essay.txt";
+
+        // Initialize a HashMap to store word frequencies
+        Map<String, Integer> wordFrequency = new HashMap<>();
+
+        // Read the essay from file and count word frequencies
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] words = line.split("\\s+"); // Split by whitespace
+                for (String word : words) {
+                    // Remove punctuation and convert to lowercase (optional)
+                    word = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+                    // Count frequency of each word
+                    if (!word.isEmpty()) {
+                        wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        // Print word frequencies
+        for (Map.Entry<String, Integer> entry : wordFrequency.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+}
+
+
+essay.txt:
+
+India, officially known as the Republic of India, is a diverse and vibrant country located in South Asia. With a rich history spanning thousands of years, India is renowned for its cultural heritage, religious diversity, and economic dynamism.
+
+Geography and Diversity:
+India is the seventh-largest country by land area and the second-most populous country in the world, with over 1.3 billion people. Its geography is incredibly diverse, ranging from the towering Himalayas in the north to the tropical beaches of the south, and from arid deserts in the west to lush forests in the east. The country boasts a variety of ecosystems, including rainforests, grasslands, and wetlands, supporting a wide array of flora and fauna.
+
+Cultural Heritage:
+India is a cradle of ancient civilizations and has been home to numerous dynasties and empires that have left a lasting legacy on its culture and architecture. The country is known for its architectural marvels such as the Taj Mahal in Agra, the forts and palaces of Rajasthan, and the ancient temples of Khajuraho and Hampi. Indian classical music, dance forms like Bharatanatyam and Kathak, and traditional arts and crafts reflect the country's rich cultural heritage.
+
+Religious Diversity:
+India is the birthplace of major religions such as Hinduism, Buddhism, Jainism, and Sikhism. It is also home to one of the world's largest Muslim populations and has significant communities of Christians, Jews, and other religious groups. The country celebrates a multitude of festivals throughout the year, including Diwali, Eid, Christmas, Holi, and Durga Puja, showcasing its religious diversity and communal harmony.
+
+Economic Growth and Innovation:
+In recent decades, India has emerged as a global economic powerhouse, experiencing rapid growth and development. It is one of the fastest-growing major economies and has a diverse industrial base encompassing sectors such as information technology, pharmaceuticals, agriculture, and manufacturing. India's vibrant startup ecosystem has fostered innovation and entrepreneurship, making it a hub for technological advancements and digital transformation.
+
+Challenges and Opportunities:
+Despite its progress, India faces challenges such as poverty, inequality, environmental degradation, and infrastructural gaps. The government and civil society are actively working towards inclusive growth, sustainable development, and social welfare through initiatives like Swachh Bharat Abhiyan, Make in India, and Digital India.
+
+Conclusion:
+India's story is one of resilience, diversity, and innovation. With its rich cultural tapestry, thriving economy, and commitment to progress, India continues to inspire and captivate the world. As it navigates the complexities of the modern era, India remains a beacon of hope and possibility, celebrating its past while shaping its future.
+
+
+Output:
+
+been: 1
+numerous: 1
+year: 1
+reflect: 1
+music: 1
+geography: 2
+manufacturing: 1
+initiatives: 1
+diverse: 3
+poverty: 1
+dance: 1
+recent: 1
+vibrant: 2
+13: 1
+environmental: 1
+abhiyan: 1
+past: 1
+economy: 1
+ancient: 2
+cultural: 4
+as: 7
+deserts: 1
+left: 1
+khajuraho: 1
+populations: 1
+religious: 4
+eid: 1
+worlds: 1
+muslim: 1
+sustainable: 1
+bharat: 1
+global: 1
+countrys: 1
+diversity: 5
+mahal: 1
+advancements: 1
+variety: 1
+are: 1
+spanning: 1
+by: 1
+civil: 1
+actively: 1
+arts: 1
+resilience: 1
+innovation: 3
+a: 11
+one: 3
+hampi: 1
+buddhism: 1
+people: 1
+forests: 1
+gaps: 1
+shaping: 1
+the: 25
+tropical: 1
+such: 4
+inspire: 1
+progress: 2
+boasts: 1
+information: 1
+to: 6
+technological: 1
+faces: 1
+story: 1
+through: 1
+country: 6
+harmony: 1
+republic: 1
+towering: 1
+rapid: 1
+remains: 1
+startup: 1
+has: 5
+celebrating: 1
+rajasthan: 1
+area: 1
+sectors: 1
+making: 1
+tapestry: 1
+christians: 1
+cradle: 1
+its: 9
+significant: 1
+jainism: 1
+beacon: 1
+secondmost: 1
+lasting: 1
+bharatanatyam: 1
+for: 3
+india: 12
+agriculture: 1
+conclusion: 1
+wetlands: 1
+society: 1
+throughout: 1
+forts: 1
+supporting: 1
+marvels: 1
+over: 1
+digital: 2
+wide: 1
+asia: 1
+rich: 3
+technology: 1
+pharmaceuticals: 1
+home: 2
+ranging: 1
+with: 3
+incredibly: 1
+holi: 1
+hub: 1
+agra: 1
+decades: 1
+base: 1
+ecosystem: 1
+welfare: 1
+hope: 1
+years: 1
+experiencing: 1
+religions: 1
+arid: 1
+inclusive: 1
+durga: 1
+in: 8
+temples: 1
+is: 10
+heritage: 3
+it: 4
+thousands: 1
+crafts: 1
+inequality: 1
+traditional: 1
+palaces: 1
+birthplace: 1
+other: 1
+south: 2
+north: 1
+classical: 1
+emerged: 1
+beaches: 1
+world: 2
+government: 1
+known: 2
+modern: 1
+era: 1
+have: 1
+continues: 1
+architecture: 1
+multitude: 1
+jews: 1
+celebrates: 1
+entrepreneurship: 1
+transformation: 1
+opportunities: 1
+empires: 1
+diwali: 1
+himalayas: 1
+indias: 2
+culture: 1
+future: 1
+located: 1
+architectural: 1
+economic: 3
+indian: 1
+communities: 1
+festivals: 1
+fauna: 1
+flora: 1
+degradation: 1
+while: 1
+communal: 1
+that: 1
+major: 2
+west: 1
+from: 2
+civilizations: 1
+taj: 1
+officially: 1
+development: 2
+including: 2
+like: 2
+commitment: 1
+history: 1
+towards: 1
+lush: 1
+christmas: 1
+fostered: 1
+hinduism: 1
+economies: 1
+fastestgrowing: 1
+complexities: 1
+populous: 1
+thriving: 1
+largest: 1
+legacy: 1
+showcasing: 1
+challenges: 2
+puja: 1
+renowned: 1
+captivate: 1
+east: 1
+grasslands: 1
+billion: 1
+array: 1
+and: 36
+of: 16
+kathak: 1
+land: 1
+working: 1
+make: 1
+possibility: 1
+sikhism: 1
+on: 1
+encompassing: 1
+seventhlargest: 1
+social: 1
+infrastructural: 1
+dynasties: 1
+groups: 1
+also: 1
+despite: 1
+swachh: 1
+industrial: 1
+ecosystems: 1
+dynamism: 1
+growth: 3
+rainforests: 1
+navigates: 1
+forms: 1
+powerhouse: 1
